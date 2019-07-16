@@ -13,6 +13,7 @@
   import Snb from '@/components/Snb.vue'
   import Gnb from '@/components/Gnb.vue'
   import Foot from '@/components/Foot.vue'
+  import axios from 'axios'
 
   export default {
     name: 'app',
@@ -28,11 +29,19 @@
     },
     mounted() {
       this.isMain = this.$router.currentRoute.path === "/";
+      console.log("App Mounted");
     },
     watch: {
       $route (to, from) {
         this.isMain = to.path === "/";
       }
+    },
+    created() {
+      console.log("App Created");
+      axios.get("/menu.json").then(result=>{
+        this.$store.commit("setMenus", result.data);
+        console.log(this.$store.state.menus);
+      });
     }
   }
 </script>

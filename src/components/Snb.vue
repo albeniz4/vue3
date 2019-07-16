@@ -23,8 +23,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "Snb",
   data() {
@@ -33,18 +31,20 @@ export default {
       menus: []
     };
   },
+  mounted() {
+    console.log("Snb Mounted");
+  },
   watch: {
     $route(to, from) {
-      axios.get("/menu.json").then(result => {
-        let idx = this.findIdx(result.data);
-        for (let row of result.data) {
-          if (row.idx === idx) {
-            if (row.sub !== null) {
-              this.menus = row.sub;
-            }
+      let idx = this.findIdx(this.$store.state.menus);
+      for (let row of this.$store.state.menus) {
+        if (row.idx === idx) {
+          this.name = row.name;
+          if (row.sub !== null) {
+            this.menus = row.sub;
           }
         }
-      });
+      }
     }
   },
   computed: {
@@ -65,9 +65,7 @@ export default {
     }
   },
   created() {
-    this.EventBus.$on("gnb-update", name => {
-      this.name = name;
-    });
+    console.log("Snb Created");
   }
 };
 </script>

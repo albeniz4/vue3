@@ -2,7 +2,7 @@
   <div id="gnb">
     <gnb-user/>
     <ul class="nav">
-      <li v-for="(menu, idx) in menus" :class="{on:isActive(menu.to)}" :key="idx">
+      <li v-for="(menu, idx) in this.$store.state.menus" :class="{on:isActive(menu.to)}" :key="idx">
         <router-link v-bind:to="{path:menu.to}">{{menu.name}}</router-link>
       </li>
     </ul>
@@ -10,26 +10,21 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import GnbUser from '@/components/GnbUser.vue'
 
   export default {
     name: 'Gnb',
     data() {
       return {
-        currentPath: '',
-        menus : []
+        currentPath: ''
       }
     },
     mounted() {
-      axios.get("/menu.json").then((result) => {
-        this.menus = result.data;
-      });
+      console.log("Gnb Mounted");
     },
     watch: {
       $route (to, from) {
         this.currentPath = to.path;
-        this.EventBus.$emit("gnb-update", this.findName(to.path));
       }
     },
     methods : {
@@ -37,12 +32,15 @@
         return path === this.currentPath;
       },
       findName(path) {
-        for (let menu of this.menus) {
+        for (let menu of this.$store.state.menus) {
           if (menu.to === path) {
             return menu.name;
           }
         }
       }
+    },
+    created() {
+      console.log("Gnb Created");
     },
     components: {
       GnbUser
