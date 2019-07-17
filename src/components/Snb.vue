@@ -19,10 +19,11 @@
       <img src="@/assets/images/btn_arrow.gif" alt />
     </p>
   </div>
-  <!-- //header -->
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
   name: "Snb",
   data() {
@@ -36,8 +37,8 @@ export default {
   },
   watch: {
     $route(to, from) {
-      let idx = this.findIdx(this.$store.state.menus);
-      for (let row of this.$store.state.menus) {
+      let idx = this.findIdx(this.allMenus);
+      for (let row of this.allMenus) {
         if (row.idx === idx) {
           this.name = row.name;
           if (row.sub !== null) {
@@ -50,7 +51,8 @@ export default {
   computed: {
     isMain() {
       return this.$route.path === "/";
-    }
+    },
+    ...mapGetters({allMenus:'getMenus'})
   },
   methods: {
     isActive(idx) {

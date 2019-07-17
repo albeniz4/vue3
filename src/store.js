@@ -12,6 +12,9 @@ export default new Vuex.Store({
       state.menus = menus;
     }
   },
+  getters: {
+    getMenus: state => state.menus  
+  },
   actions: {
 
   }

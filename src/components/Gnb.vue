@@ -2,7 +2,7 @@
   <div id="gnb">
     <gnb-user/>
     <ul class="nav">
-      <li v-for="(menu, idx) in this.$store.state.menus" :class="{on:isActive(menu.to)}" :key="idx">
+      <li v-for="(menu, idx) in menus" :class="{on:isActive(menu.to)}" :key="idx">
         <router-link v-bind:to="{path:menu.to}">{{menu.name}}</router-link>
       </li>
     </ul>
@@ -11,6 +11,7 @@
 
 <script>
   import GnbUser from '@/components/GnbUser.vue'
+  import {mapGetters} from 'vuex'
 
   export default {
     name: 'Gnb',
@@ -23,20 +24,16 @@
       console.log("Gnb Mounted");
     },
     watch: {
-      $route (to, from) {
+      $route (to) {
         this.currentPath = to.path;
       }
+    },
+    computed: {
+      ...mapGetters({menus:'getMenus'})
     },
     methods : {
       isActive(path) {
         return path === this.currentPath;
-      },
-      findName(path) {
-        for (let menu of this.$store.state.menus) {
-          if (menu.to === path) {
-            return menu.name;
-          }
-        }
       }
     },
     created() {
