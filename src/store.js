@@ -7,13 +7,13 @@ export default new Vuex.Store({
   state: {
     menus: []
   },
+  getters: {
+    getMenus: state => state.menus
+  },
   mutations: {
     setMenus(state, menus) {
       state.menus = menus;
     }
-  },
-  getters: {
-    getMenus: state => state.menus  
   },
   actions: {
 

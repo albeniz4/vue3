@@ -8,6 +8,7 @@
   </div>
 </template>
 <script>
+import {mapState} from 'vuex'
 export default {
   name: "Location",
   data() {
@@ -17,7 +18,7 @@ export default {
     };
   },
   mounted() {
-    for (let row of this.$store.state.menus) {
+    for (let row of this.menus) {
       if (row.idx == this.largeIdx) {
         this.largeName = row.name;
 
@@ -30,6 +31,9 @@ export default {
         break;
       }
     }
+  },
+  computed: {
+    ...mapState(['menus'])
   },
   props: {
     largeIdx: Number,

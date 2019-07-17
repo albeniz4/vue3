@@ -12,6 +12,7 @@
 <script>
   import GnbUser from '@/components/GnbUser.vue'
   import {mapGetters} from 'vuex'
+  import {mapState} from 'vuex'
 
   export default {
     name: 'Gnb',
@@ -29,7 +30,8 @@
       }
     },
     computed: {
-      ...mapGetters({menus:'getMenus'})
+      //...mapGetters({menus:'getMenus'})
+      ...mapState(['menus'])
     },
     methods : {
       isActive(path) {
