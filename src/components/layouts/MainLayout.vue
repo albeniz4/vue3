@@ -1,21 +1,20 @@
 <template>
   <div id="wrapper">
-    <snb />
+    <main-snb />
     <gnb />
     <slot />
     <foot />
-    Main
   </div>
 </template>
 <script>
-import Snb from "@/components/Snb.vue";
+import MainSnb from "@/components/MainSnb.vue";
 import Gnb from "@/components/Gnb.vue";
 import Foot from "@/components/Foot.vue";
 
 export default {
   name: "MainLayout",
   components: {
-    Snb,
+    MainSnb,
     Gnb,
     Foot
   }

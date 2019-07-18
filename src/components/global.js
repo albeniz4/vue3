@@ -5,7 +5,7 @@ import camelCase from 'lodash/camelCase'
 // https://webpack.js.org/guides/dependency-management/#require-context
 const requireComponent = require.context(
   // Look for files in the current directory
-  './tags',
+  './global',
   // Do not look in subdirectories
   true
 )

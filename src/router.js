@@ -12,7 +12,9 @@ export default new Router({
       name: 'index',
       path: '/',
       component: Home,
-      meta: {layout : "main-layout"}
+      meta: {
+        layout: "main-layout"
+      }
     },
     {
       name: 'cf',

@@ -4,7 +4,6 @@
     <gnb />
     <slot />
     <foot />
-    Default
   </div>
 </template>
 <script>
