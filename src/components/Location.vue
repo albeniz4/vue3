@@ -18,6 +18,7 @@ export default {
     };
   },
   mounted() {
+    console.log("Location Mounted");
     for (let row of this.menus) {
       if (row.idx == this.largeIdx) {
         this.largeName = row.name;

@@ -11,7 +11,8 @@ export default new Router({
     {
       name: 'index',
       path: '/',
-      component: Home
+      component: Home,
+      meta: {layout : "main-layout"}
     },
     {
       name: 'cf',
