@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     isActive: idx => idx === 1,
-    findIdx: (data) => {
+    findIdx(data) {
       for (let row of data) {
         if (row.to === this.$route.path) {
           return row.idx;
