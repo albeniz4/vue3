@@ -34,6 +34,15 @@ export default {
   },
   mounted() {
     console.log("Snb Mounted");
+    let idx = this.findIdx(this.allMenus);
+    for (let row of this.allMenus) {
+      if (row.idx === idx) {
+        this.name = row.name;
+        if (row.sub !== null) {
+          this.menus = row.sub;
+        }
+      }
+    }
   },
   watch: {
     $route() {

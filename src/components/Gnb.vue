@@ -22,6 +22,7 @@
     },
     mounted() {
       console.log("Gnb Mounted");
+      this.currentPath = this.$route.path;
     },
     watch: {
       $route (to) {
@@ -33,6 +34,7 @@
     },
     methods : {
       isActive(path) {
+        console.log(path + "," + this.currentPath);
         return path === this.currentPath;
       }
     },
