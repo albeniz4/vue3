@@ -11,7 +11,6 @@
 
 <script>
   import GnbUser from '@/components/GnbUser.vue'
-  import {mapGetters} from 'vuex'
   import {mapState} from 'vuex'
 
   export default {
@@ -30,7 +29,6 @@
       }
     },
     computed: {
-      //...mapGetters({menus:'getMenus'})
       ...mapState(['menus'])
     },
     methods : {
