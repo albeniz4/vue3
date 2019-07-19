@@ -17,24 +17,34 @@ export default {
       smallName: ""
     };
   },
+  watch: {
+    menus() {
+      this.init();
+    }
+  },
   mounted() {
     console.log("Location Mounted");
-    for (let row of this.menus) {
-      if (row.idx == this.largeIdx) {
-        this.largeName = row.name;
-
-        for (let subRow of row.sub) {
-          if (subRow.idx == this.smallIdx) {
-            this.smallName = subRow.name;
-            break;
-          }
-        }
-        break;
-      }
-    }
+    this.init();
   },
   computed: {
     ...mapState(['menus'])
+  },
+  methods: {
+    init() {
+      for (let row of this.menus) {
+        if (row.idx == this.largeIdx) {
+          this.largeName = row.name;
+
+          for (let subRow of row.sub) {
+            if (subRow.idx == this.smallIdx) {
+              this.smallName = subRow.name;
+              break;
+            }
+          }
+          break;
+        }
+      }
+    }
   },
   props: {
     largeIdx: Number,

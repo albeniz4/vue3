@@ -22,30 +22,25 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 import {mapState} from 'vuex';
 
 export default {
   name: "Snb",
-  data() {
-    return {
-      name: "",
-      menus: []
-    };
-  },
-  mounted() {
-    console.log("Snb Mounted");
-    this.initMenus();
-  },
-  watch: {
-    $route() {
-      console.log("Route Modified");
-      this.initMenus();
-    }
-  },
   computed: {
     isMain() {
       return this.$route.path === "/";
     },
+    menus() {
+      return this.getSubMenus(this.idx);
+    },
+    idx() {
+      return this.findIdx(this.allMenus);
+    },
+    name() {
+      return this.getMenuName(this.idx);
+    },
+    ...mapGetters(['getMenuName', 'getSubMenus']),
     ...mapState({allMenus:'menus'})
   },
   methods: {
@@ -56,17 +51,6 @@ export default {
       for (let row of data) {
         if (row.to === this.$route.path) {
           return row.idx;
-        }
-      }
-    },
-    initMenus() {
-      let idx = this.findIdx(this.allMenus);
-      for (let row of this.allMenus) {
-        if (row.idx === idx) {
-          this.name = row.name;
-          if (row.sub !== null) {
-            this.menus = row.sub;
-          }
         }
       }
     }

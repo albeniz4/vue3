@@ -20,15 +20,16 @@ export default {
   },
   mounted() {
     console.log("App Mounted");
+    axios.get("/menu.json").then(result => {
+      this.setMenus(result.data);
+      console.log("App Mounted------>" + JSON.stringify(this.$store.state.menus));
+    });
   },
   methods: {
     ...mapMutations(["setMenus"])
   },
   created() {
     console.log("App Created");
-    axios.get("/menu.json").then(result => {
-      this.setMenus(result.data);
-    });
   },
   computed: {
     layout() {

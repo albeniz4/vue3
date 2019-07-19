@@ -8,7 +8,22 @@ export default new Vuex.Store({
     menus: []
   },
   getters: {
-    getMenus: state => state.menus
+    getSubMenus: state => idx => {
+      for (let row of state.menus) {
+        if (row.idx === idx) {
+          if (row.sub !== null) {
+            return row.sub;
+          }
+        }
+      }
+    },
+    getMenuName: state => idx => {
+      for (let row of state.menus) {
+        if (row.idx === idx) {
+          return row.name;
+        }
+      }
+    }
   },
   mutations: {
     setMenus(state, menus) {
