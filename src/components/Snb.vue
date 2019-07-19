@@ -34,12 +34,12 @@ export default {
   },
   mounted() {
     console.log("Snb Mounted");
-    this.renderMenus();
+    this.initMenus();
   },
   watch: {
     $route() {
       console.log("Route Modified");
-      this.renderMenus();
+      this.initMenus();
     }
   },
   computed: {
@@ -59,7 +59,7 @@ export default {
         }
       }
     },
-    renderMenus() {
+    initMenus() {
       let idx = this.findIdx(this.allMenus);
       for (let row of this.allMenus) {
         if (row.idx === idx) {
