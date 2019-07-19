@@ -22,9 +22,7 @@
       ...mapState(['menus'])
     },
     methods : {
-      isCurrent(path) {
-        return path === this.$route.path;
-      }
+      isCurrent: path => path === this.$route.path
     },
     created() {
       console.log("Gnb Created");

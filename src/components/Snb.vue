@@ -44,10 +44,8 @@ export default {
     ...mapState({allMenus:'menus'})
   },
   methods: {
-    isActive(idx) {
-      return idx === 1;
-    },
-    findIdx(data) {
+    isActive: idx => idx === 1,
+    findIdx: (data) => {
       for (let row of data) {
         if (row.to === this.$route.path) {
           return row.idx;
