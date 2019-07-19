@@ -12,7 +12,6 @@ import Gnb from "@/components/Gnb.vue";
 import Foot from "@/components/Foot.vue";
 
 export default {
-  name: "DefaultLayout",
   components: {
     Snb,
     Gnb,
