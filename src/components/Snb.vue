@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
+import {mapState} from 'vuex';
 
 export default {
   name: "Snb",
@@ -34,18 +34,10 @@ export default {
   },
   mounted() {
     console.log("Snb Mounted");
-    let idx = this.findIdx(this.allMenus);
-    for (let row of this.allMenus) {
-      if (row.idx === idx) {
-        this.name = row.name;
-        if (row.sub !== null) {
-          this.menus = row.sub;
-        }
-      }
-    }
   },
   watch: {
     $route() {
+      console.log("Route Modified");
       let idx = this.findIdx(this.allMenus);
       for (let row of this.allMenus) {
         if (row.idx === idx) {
@@ -61,7 +53,7 @@ export default {
     isMain() {
       return this.$route.path === "/";
     },
-    ...mapGetters({allMenus:'getMenus'})
+    ...mapState({allMenus:'menus'})
   },
   methods: {
     isActive(idx) {
