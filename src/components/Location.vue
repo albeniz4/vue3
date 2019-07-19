@@ -10,7 +10,6 @@
 <script>
 import {mapState} from 'vuex'
 export default {
-  name: "Location",
   data() {
     return {
       largeName: "",

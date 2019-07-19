@@ -20,11 +20,6 @@
     </footer>
   </div>
 </template>
-<script>
-export default {
-  name: "BaseLayout"
-};
-</script>
 <style scoped>
     header {border: 1px solid gray; background-color: lightgreen;}
     main {border: 1px solid gray; background-color: lightpink;}

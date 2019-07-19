@@ -26,7 +26,6 @@ import {mapGetters} from 'vuex';
 import {mapState} from 'vuex';
 
 export default {
-  name: "Snb",
   computed: {
     isMain() {
       return this.$route.path === "/";

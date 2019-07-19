@@ -3,7 +3,6 @@
 </template>
 <script>
 export default {
-  name: "foot",
   data() {
     return {
       name: "footer area"

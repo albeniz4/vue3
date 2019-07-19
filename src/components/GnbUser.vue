@@ -7,7 +7,6 @@
 
 <script>
   export default {
-    name: 'GnbUser',
     data() {
       return {
         userName: "이민식"
