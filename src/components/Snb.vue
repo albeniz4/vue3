@@ -34,28 +34,12 @@ export default {
   },
   mounted() {
     console.log("Snb Mounted");
-    let idx = this.findIdx(this.allMenus);
-    for (let row of this.allMenus) {
-      if (row.idx === idx) {
-        this.name = row.name;
-        if (row.sub !== null) {
-          this.menus = row.sub;
-        }
-      }
-    }
+    this.renderMenus();
   },
   watch: {
     $route() {
       console.log("Route Modified");
-      let idx = this.findIdx(this.allMenus);
-      for (let row of this.allMenus) {
-        if (row.idx === idx) {
-          this.name = row.name;
-          if (row.sub !== null) {
-            this.menus = row.sub;
-          }
-        }
-      }
+      this.renderMenus();
     }
   },
   computed: {
@@ -72,6 +56,17 @@ export default {
       for (let row of data) {
         if (row.to === this.$route.path) {
           return row.idx;
+        }
+      }
+    },
+    renderMenus() {
+      let idx = this.findIdx(this.allMenus);
+      for (let row of this.allMenus) {
+        if (row.idx === idx) {
+          this.name = row.name;
+          if (row.sub !== null) {
+            this.menus = row.sub;
+          }
         }
       }
     }

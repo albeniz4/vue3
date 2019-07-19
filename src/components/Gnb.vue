@@ -2,7 +2,7 @@
   <div id="gnb">
     <gnb-user/>
     <ul class="nav">
-      <li v-for="(menu, idx) in menus" :class="{on:isActive(menu.to)}" :key="idx">
+      <li v-for="(menu, idx) in menus" :class="{on:isCurrent(menu.to)}" :key="idx">
         <router-link v-bind:to="{path:menu.to}">{{menu.name}}</router-link>
       </li>
     </ul>
@@ -15,27 +15,15 @@
 
   export default {
     name: 'Gnb',
-    data() {
-      return {
-        currentPath: ''
-      }
-    },
     mounted() {
       console.log("Gnb Mounted");
-      this.currentPath = this.$route.path;
-    },
-    watch: {
-      $route (to) {
-        this.currentPath = to.path;
-      }
     },
     computed: {
       ...mapState(['menus'])
     },
     methods : {
-      isActive(path) {
-        console.log(path + "," + this.currentPath);
-        return path === this.currentPath;
+      isCurrent(path) {
+        return path === this.$route.path;
       }
     },
     created() {
