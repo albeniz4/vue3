@@ -3,7 +3,7 @@
     <gnb-user/>
     <ul class="nav">
       <li v-for="(menu, idx) in menus" :class="{on:isCurrent(menu.to)}" :key="idx">
-        <router-link v-bind:to="{path:menu.to}">{{menu.name}}</router-link>
+        <router-link :to="{path:menu.to}">{{menu.name}}</router-link>
       </li>
     </ul>
   </div>

@@ -18,7 +18,7 @@ export default new Router({
     },
     {
       name: 'cf',
-      path: '/cf/',
+      path: '/cf',
       component: () => import('./views/cf/List.vue')
     },
     {
