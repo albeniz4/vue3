@@ -52,7 +52,8 @@ export default {
 
         if (n <= this.totalPages) {
           arr.push(n);
-        } else break;
+        }
+        else break;
       }
 
       return arr;
@@ -71,7 +72,8 @@ export default {
         let reg = new RegExp("(([&|?])*" + PARAM + "=([^&]*))", "g");
         let headChar = _url[_url.search(reg)];
         _url = _url.replace(reg, headChar + PARAM + "=" + n);
-      } else {
+      }
+      else {
         _url += (_url.indexOf("?") > -1 ? "&" : "?") + "page=" + n;
       }
 
