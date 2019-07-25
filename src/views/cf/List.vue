@@ -3,7 +3,7 @@
     <location :large-idx="1" :small-idx="1" />
     <div>보자 내용</div>
     <div id="pagingArea">
-      <paging :page="page" :rows="rows"/>
+      <default-paging :page="page" :rows="rows"/>
     </div>
   </div>
 </template>
