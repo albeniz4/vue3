@@ -10,7 +10,10 @@
 <script>
 export default {
   props: {
-    page: Number,
+    page: {
+      type: Number,
+      default: 1
+    },
     rows: Number,
     pageSize: {
       type: Number,
