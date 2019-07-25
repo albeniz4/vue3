@@ -66,25 +66,26 @@ export default {
       }
 
       return arr;
-    },
-    url() {
-      return this.removeParam(this.$route.fullPath, "page");
     }
   },
   methods: {
     toPage(n) {
       if (this.page !== n) {
-        this.$router.push({ path: this.url + "?page=" + n});
+        this.$router.push({ path: this.updatePageParam(n)});
       }
     },
-    removeParam(url, key) {
-      var reg = new RegExp("((&)*" + key + "=([^&]*))", "g");
-      let _url = url.replace(reg, "");
-      _url = _url.replace("?&", "?");
-
-      if (_url.lastIndexOf("?") === _url.length - 1) {
-        _url = _url.substring(0, _url.length - 1);
+    updatePageParam(n) {
+      let _url = this.$route.fullPath;
+      if (_url.indexOf("page=") > -1) {
+        const PARAM = "page";
+        let reg = new RegExp("(([&|?])*" + PARAM + "=([^&]*))", "g");
+        let headChar = _url[_url.search(reg)];
+        _url = _url.replace(reg, headChar + PARAM + "=" + n);
       }
+      else {
+        _url += (_url.indexOf("?") > -1 ? "&" : "?") +  "page=" + n;
+      }
+
       return _url;
     }
   }
