@@ -7,7 +7,7 @@ import animal from './store/animal'
 import city from './store/city'
 
 const vuexPersist = new VuexPersist({
-    key: 'vue-key',
+    key: 'vuex-persist-store',
     storage: localStorage,
     modules: ['animal']
 })
