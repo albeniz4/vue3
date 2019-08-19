@@ -1,35 +1,24 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersist from 'vuex-persist'
+
+import main from './store/main'
+import animal from './store/animal'
+import city from './store/city'
+
+const vuexPersist = new VuexPersist({
+    key: 'vue-key',
+    storage: localStorage,
+    modules: ['animal']
+})
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    menus: []
+  modules: {
+    main,
+    animal,
+    city
   },
-  getters: {
-    getSubMenus: state => idx => {
-      for (let row of state.menus) {
-        if (row.idx === idx) {
-          if (row.sub !== null) {
-            return row.sub;
-          }
-        }
-      }
-    },
-    getMenuName: state => idx => {
-      for (let row of state.menus) {
-        if (row.idx === idx) {
-          return row.name;
-        }
-      }
-    }
-  },
-  mutations: {
-    setMenus(state, menus) {
-      state.menus = menus;
-    }
-  },
-  actions: {
-  }
+  plugins: [vuexPersist.plugin]
 })

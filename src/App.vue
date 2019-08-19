@@ -22,11 +22,11 @@ export default {
     console.log("App Mounted");
     axios.get("/menu.json").then(result => {
       this.setMenus(result.data);
-      console.log("App Mounted------>" + JSON.stringify(this.$store.state.menus));
+      console.log("App Mounted------>" + JSON.stringify(this.$store.state.main.menus));
     });
   },
   methods: {
-    ...mapMutations(["setMenus"])
+    ...mapMutations("main", ["setMenus"])
   },
   created() {
     console.log("App Created");

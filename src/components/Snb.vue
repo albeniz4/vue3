@@ -39,8 +39,8 @@ export default {
     name() {
       return this.getMenuName(this.idx);
     },
-    ...mapGetters(['getMenuName', 'getSubMenus']),
-    ...mapState({allMenus:'menus'})
+    ...mapGetters("main", ['getMenuName', 'getSubMenus']),
+    ...mapState("main", {allMenus:'menus'})
   },
   methods: {
     isActive: idx => idx === 1,
