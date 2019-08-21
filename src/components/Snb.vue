@@ -22,8 +22,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
-import {mapState} from 'vuex';
+import {mapGetters, mapState} from 'vuex';
 
 export default {
   computed: {
@@ -39,8 +38,8 @@ export default {
     name() {
       return this.getMenuName(this.idx);
     },
-    ...mapGetters("main", ['getMenuName', 'getSubMenus']),
-    ...mapState("main", {allMenus:'menus'})
+    ...mapGetters("menu", ['getMenuName', 'getSubMenus']),
+    ...mapState("menu", {allMenus:'menus'})
   },
   methods: {
     isActive: idx => idx === 1,

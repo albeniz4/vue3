@@ -18,7 +18,7 @@
       console.log("Gnb Mounted");
     },
     computed: {
-      ...mapState("main", ['menus'])
+      ...mapState("menu", ['menus'])
     },
     methods : {
       isCurrent(path) {

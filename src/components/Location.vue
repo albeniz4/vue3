@@ -26,7 +26,7 @@ export default {
     this.init();
   },
   computed: {
-    ...mapState("main", ['menus'])
+    ...mapState('menu', ['menus'])
   },
   methods: {
     init() {
